@@ -35,6 +35,7 @@ Everything is Free!
 - **SQL Server Management Studio (SSMS):** GUI for managing and interacting with databases.
 - **Git Repository:** Set up a GitHub account and repository to manage, version, and collaborate on your code efficiently.
 - **DrawIO:** Design data architecture, models, flows, and diagrams.
+- **Notion:** Make a Project Plan
 
 ---
 
