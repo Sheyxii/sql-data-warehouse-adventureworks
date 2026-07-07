@@ -1,0 +1,11 @@
+SELECT * FROM bronze.aw_customer
+
+-- >>> Quality Check: customer_id
+
+-- Check Uniqueness 
+SELECT 
+	account_number,
+	COUNT(*)
+FROM  bronze.aw_customer
+GROUP BY account_number
+HAVING COUNT(*) > 1
