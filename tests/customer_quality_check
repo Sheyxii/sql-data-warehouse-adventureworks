@@ -1,11 +1,31 @@
-SELECT * FROM bronze.aw_customer
+SELECT * FROM bronze.aw_customer;
 
 -- >>> Quality Check: customer_id
 
--- Check Uniqueness 
+-- Check Duplicates
 SELECT 
-	account_number,
-	COUNT(*)
+	customer_id,
+	COUNT(*) AS total_duplicates
 FROM  bronze.aw_customer
-GROUP BY account_number
-HAVING COUNT(*) > 1
+GROUP BY customer_id
+HAVING COUNT(*) > 1;
+
+-- Check NULL 
+SELECT 
+	COUNT(*) AS total_null
+FROM  bronze.aw_customer
+WHERE customer_id IS NULL;
+	
+
+
+-- >>> Quality Check: person_id
+
+-- Orphan Check
+SELECT 
+	c.person_id,
+	p.business_entity_id
+FROM bronze.aw_customer AS c
+LEFT JOIN bronze.aw_person AS p
+ON c.person_id = p.business_entity_id
+WHERE c.person_id IS NOT NULL
+	AND p.business_entity_id IS NULL;
