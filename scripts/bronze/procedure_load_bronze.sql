@@ -219,6 +219,29 @@ BEGIN
         PRINT 'LOAD DURATION: ' + CAST(DATEDIFF(SECOND, @start_time, @end_time) AS NVARCHAR) + ' seconds';
         PRINT '===================================';
 
+		
+        -- ===== bronze.aw_sales_order_detail =====
+        SET @start_time = GETDATE();
+        PRINT '=>> TRUNCATING TABLE: bronze.aw_sales_order_detail';
+        TRUNCATE TABLE bronze.aw_sales_order_detail;
+
+        PRINT '=>> INSERTING DATA INTO: bronze.aw_sales_order_detail';
+        INSERT INTO bronze.aw_sales_order_detail (
+            sales_order_id, sales_order_detail_id, carrier_tracking_number,
+            order_qty, product_id, special_offer_id,
+            unit_price, unit_price_discount, line_total, rowguid,
+            modified_date
+        )
+        SELECT
+            SalesOrderID, SalesOrderDetailID, CarrierTrackingNumber,
+            OrderQty, ProductID, SpecialOfferID, UnitPrice,
+            UnitPriceDiscount, LineTotal, rowguid, ModifiedDate
+        FROM AdventureWorks2025.Sales.SalesOrderDetail;
+
+        SET @end_time = GETDATE();
+        PRINT 'LOAD DURATION: ' + CAST(DATEDIFF(SECOND, @start_time, @end_time) AS NVARCHAR) + ' seconds';
+        PRINT '===================================';
+
 
         SET @batch_end_time = GETDATE()
         PRINT ''
