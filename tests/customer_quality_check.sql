@@ -1,4 +1,3 @@
-SELECT * FROM bronze.aw_customer;
 
 -- >>> Quality Check: customer_id
 
