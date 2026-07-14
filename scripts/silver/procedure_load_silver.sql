@@ -94,3 +94,76 @@ SELECT
     TRIM(name) AS name
 FROM bronze.aw_product_category;
 GO
+
+-- Sales Territory
+TRUNCATE TABLE silver.aw_sales_territory;
+GO
+
+INSERT INTO silver.aw_sales_territory (
+    territory_id,
+    name,
+    country_region_code,
+    group_name
+)
+SELECT
+    territory_id,
+    TRIM(name) AS name,
+    TRIM(country_region_code) AS country_region_code,
+    TRIM(group_name) AS group_name
+FROM bronze.aw_sales_territory
+WHERE territory_id IS NOT NULL;
+GO
+
+
+-- Sales Person
+TRUNCATE TABLE silver.aw_sales_person;
+GO
+
+INSERT INTO silver.aw_sales_person (
+    business_entity_id,
+    territory_id
+)
+SELECT
+    business_entity_id,
+    territory_id
+FROM bronze.aw_sales_person
+WHERE business_entity_id IS NOT NULL;
+GO
+
+
+-- Employee
+TRUNCATE TABLE silver.aw_employee;
+GO
+
+INSERT INTO silver.aw_employee (
+    business_entity_id,
+    job_title
+)
+SELECT
+    business_entity_id,
+    TRIM(job_title) AS job_title
+FROM bronze.aw_employee
+WHERE business_entity_id IS NOT NULL;
+GO
+
+
+-- Sales Order Header
+TRUNCATE TABLE silver.aw_sales_order_header;
+GO
+
+INSERT INTO silver.aw_sales_order_header (
+    sales_order_id,
+    order_date,
+    customer_id,
+    sales_person_id,
+    territory_id
+)
+SELECT
+    sales_order_id,
+    CAST(order_date AS DATE) AS order_date,
+    customer_id,
+    sales_person_id,
+    territory_id
+FROM bronze.aw_sales_order_header
+WHERE sales_order_id IS NOT NULL;
+GO
