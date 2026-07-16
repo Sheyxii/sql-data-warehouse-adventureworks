@@ -237,10 +237,28 @@ BEGIN
             OrderQty, ProductID, SpecialOfferID, UnitPrice,
             UnitPriceDiscount, LineTotal, rowguid, ModifiedDate
         FROM AdventureWorks2025.Sales.SalesOrderDetail;
-
+		
         SET @end_time = GETDATE();
         PRINT 'LOAD DURATION: ' + CAST(DATEDIFF(SECOND, @start_time, @end_time) AS NVARCHAR) + ' seconds';
         PRINT '===================================';
+		
+				-- ===== bronze.aw_store =====
+		SET @start_time = GETDATE();
+		PRINT '=>> TRUNCATING TABLE: bronze.aw_store';
+		TRUNCATE TABLE bronze.aw_store;
+		PRINT '=>> INSERTING DATA INTO: bronze.aw_store';
+		INSERT INTO bronze.aw_store (
+		    business_entity_id, name, sales_person_id,
+		    demographics, rowguid, modified_date
+		)
+		SELECT
+		    BusinessEntityID, Name, SalesPersonID,
+		    Demographics, rowguid, ModifiedDate
+		FROM AdventureWorks2025.Sales.Store;
+		SET @end_time = GETDATE()
+		PRINT 'LOAD DURATION: ' + CAST(DATEDIFF(SECOND, @start_time, @end_time) AS NVARCHAR) + ' seconds';
+		PRINT '===================================';
+
 
 
         SET @batch_end_time = GETDATE()
