@@ -14,3 +14,5 @@ HAVING COUNT(*) > 1;
 SELECT customer_type, COUNT(*) AS total
 FROM gold.dim_customers
 GROUP BY customer_type;
+
+
