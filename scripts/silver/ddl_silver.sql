@@ -151,3 +151,16 @@ CREATE TABLE silver.aw_sales_order_detail (
     dw_create_date            DATETIME2 DEFAULT GETDATE()
 );
 GO
+
+
+IF OBJECT_ID('silver.aw_store', 'U') IS NOT NULL
+    DROP TABLE silver.aw_store;
+GO
+
+CREATE TABLE silver.aw_store (
+    business_entity_id     INT,
+    name                   NVARCHAR(50),
+    sales_person_id        INT,
+    dw_create_date         DATETIME2 DEFAULT GETDATE()
+);
+GO
