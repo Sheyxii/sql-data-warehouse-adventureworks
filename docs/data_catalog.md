@@ -11,7 +11,7 @@ The Gold Layer is the business-level data representation of the Sales Data Mart,
 
 ## 1. gold.dim_customers
 
-**Type:** View
+**Type:** View   
 **Purpose:** Stores customer identity information. A "customer" may be either an individual person or a reseller store, unified into a single dimension per AdventureWorks' business model.
 
 | Column Name | Data Type | Description |
@@ -29,7 +29,7 @@ The Gold Layer is the business-level data representation of the Sales Data Mart,
 
 ## 2. gold.dim_products
 
-**Type:** View
+**Type:** View   
 **Purpose:** Provides product attributes and category hierarchy for sellable products only.
 
 | Column Name | Data Type | Description |
@@ -52,7 +52,7 @@ The Gold Layer is the business-level data representation of the Sales Data Mart,
 
 ## 3. gold.dim_sales_persons
 
-**Type:** View
+**Type:** View   
 **Purpose:** Stores sales representative identity and role information.
 
 | Column Name | Data Type | Description |
@@ -69,7 +69,7 @@ The Gold Layer is the business-level data representation of the Sales Data Mart,
 
 ## 4. gold.dim_dates
 
-**Type:** Physical Table (not a view — generated once via a recursive CTE date spine, not derived live from Silver)
+**Type:** Physical Table (not a view — generated once via a recursive CTE date spine, not derived live from Silver)   
 **Purpose:** Calendar reference table enabling time-based analysis (trends, period-over-period comparisons) — has no source table in AdventureWorks OLTP.
 
 | Column Name | Data Type | Description |
@@ -92,7 +92,7 @@ The Gold Layer is the business-level data representation of the Sales Data Mart,
 
 ## 5. gold.dim_territory
 
-**Type:** View
+**Type:** View   
 **Purpose:** Stores sales territory/region attributes.
 
 | Column Name | Data Type | Description |
@@ -107,7 +107,7 @@ The Gold Layer is the business-level data representation of the Sales Data Mart,
 
 ## 6. gold.fact_sales
 
-**Type:** View
+**Type:** View   
 **Grain:** One row per sales order line item (`sales_order_id` + `sales_order_detail_id`)
 **Purpose:** Central transactional fact table for sales performance analysis.
 
