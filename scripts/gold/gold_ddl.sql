@@ -111,7 +111,7 @@ GO
 
 -- Create Dimension: gold.dim_dates
 IF OBJECT_ID('gold.dim_dates', 'U') IS NOT NULL
-    DROP TABLE gold.dim_date;
+    DROP TABLE gold.dim_dates;
 GO
 
 CREATE TABLE gold.dim_dates (
