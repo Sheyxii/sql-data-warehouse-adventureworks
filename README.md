@@ -9,7 +9,7 @@ This project demonstrates a comprehensive data warehousing solution built on the
 ## Data Architecture
 
 The data architecture follows the **Medallion Architecture** with Bronze, Silver, and Gold layers:
-
+![Data Architecture](docs/data_architecture.png)
 - **Bronze Layer:** Stores raw data as-is from the AdventureWorks source system. Data is ingested directly from the AdventureWorks database tables into SQL Server.
 - **Silver Layer:** Includes data cleansing, standardization, and normalization processes to prepare data for analysis.
 - **Gold Layer:** Houses business-ready data modeled into a **Star Schema** optimized for reporting and analytics.
