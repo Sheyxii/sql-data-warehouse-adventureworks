@@ -77,10 +77,13 @@ sql-datawarehouse-project-with-adventureworks/
 ├── datasets/                        # Raw AdventureWorks source data (if applicable)
 │
 ├── docs/                            # Project documentation and architecture details
-│   ├── data_architecture.png        # Draw.io file showing the project's architecture
+|   ├── Notes.txt                    # Txt file for implementation plan
+│   ├── data_architecture.png        # Png file showing the project's architecture
 │   ├── data_catalog.md              # Catalog of datasets, including field descriptions and metadata
-│   ├── data_flow.png                # Draw.io file for the data flow diagram
-│   ├── data_models.png              # Draw.io file for data models (star schema)
+│   ├── data_flow.png                # Png file for the data flow diagram
+│   ├── data_integration.png         # Png file for integration of data with their id's
+│   ├── data_layer.png               # Png file for the bronze, silver, and gold layers
+│   ├── data_model.png               # Png file for data models (star schema)
 │   ├── naming_conventions.md        # Consistent naming guidelines for tables, columns, and files
 │
 ├── scripts/                         # SQL scripts for ETL and transformations
@@ -94,6 +97,5 @@ sql-datawarehouse-project-with-adventureworks/
 │
 ├── README.md                        # Project overview and instructions
 ├── LICENSE                          # License information for the repository
-├── .gitignore                       # Files and directories to be ignored by Git
-└── requirements.txt                 # Dependencies and requirements for the project
+└── .gitignore                       # Files and directories to be ignored by Git
 ```
