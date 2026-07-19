@@ -12,7 +12,7 @@ The data architecture follows the **Medallion Architecture** with Bronze, Silver
 ![Data Architecture](docs/data_architecture.png)
 - **Bronze Layer:** Stores raw data as-is from the AdventureWorks source system. Data is ingested directly from the AdventureWorks database tables into SQL Server.
 - **Silver Layer:** Includes data cleansing, standardization, and normalization processes to prepare data for analysis.
-- **Gold Layer:** Houses business-ready data modeled into a **Star Schema** optimized for reporting and analytics.
+- **Gold Layer:** Contains a Sales Data Mart modeled using a Star Schema. The data mart consists of a central fact_sales table surrounded by dimension tables such as customers, products, dates, salespersons, and territories, providing a business-ready model optimized for sales reporting and analytical queries.
 
 ---
 
