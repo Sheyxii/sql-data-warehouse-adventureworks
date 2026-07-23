@@ -75,10 +75,10 @@ BEGIN
             product_id,
             TRIM(name) AS name,
             TRIM(product_number) AS product_number,
-            TRIM(color) AS color,
+            COALESCE(CAST(color AS VARCHAR), 'N/A') AS color,
             standard_cost,
             list_price,
-            TRIM(size) AS size,
+            COALESCE(CAST(size AS VARCHAR), 'N/A') AS size,
             product_subcategory_id
         FROM bronze.aw_product;
         SET @end_time = GETDATE();
