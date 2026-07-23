@@ -18,8 +18,17 @@ SELECT
 FROM bronze.aw_product
 WHERE product_id IS NULL;
 
+SELECT
+	color
+FROM silver.aw_product
+WHERE color IS NULL
 
+SELECT
+	size
+FROM silver.aw_product
+WHERE size IS NULL
 
+    
 -- Guardrail Check
 SELECT
     color
